@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+#container div > img {
+    width: 180px;
+}
+
+#container div > h1 {
+    color: rgba(0,0,0,.9);
+    font-weight: bold;
+}
+
+#container div > a {
+    background:#008ec2;
+    border-radius: 5px;
+    color: #fff;
+    border: 1px solid black;
+    border-style: none;
+    padding: 15px 35px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .3s ease;
+}
+
+#container div > a:hover {
+    transition: .3s ease;
+    background: black;
+}

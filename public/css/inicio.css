@@ -1,0 +1,216 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+	width: 100%;
+
+	font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	width: 45px;
+	cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+	font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .search {
+	padding: 7px;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+	transition: .2s;
+}
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+.body__page
+{
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+}
+
+.container__card
+{
+  height: calc(100% - 3rem);
+   width: 100%;
+   padding: 20px;
+   padding-bottom: 40px;
+   margin: auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   flex-wrap: wrap;
+}
+
+.card_c1
+{
+	width: 300px;
+	position: relative;
+	margin:20px;
+	transition: all 300ms;
+}
+
+.card_c1:hover .icon
+{
+	background:white;
+	box-shadow: 0 1px 7px;
+	border-radius: 10px;
+	margin-left:-170px; 
+}
+
+.card_c1:hover .card_c2
+{
+	margin-left:-170px; 
+
+}
+
+.card_c1:hover .info__description
+{
+	margin-left: 150px;
+}
+.card_c2
+{
+	width: 300px;
+	position: relative;
+	margin:20px;
+	transition: all 300ms;
+}
+
+.card_c2:hover .icon
+{
+	background:white;
+	box-shadow: 0 1px 7px;
+	border-radius: 10px;
+	margin-left:-170px; 
+}
+
+.card_c2:hover .info__description
+{
+	margin-left: 150px;
+}
+
+.icon
+{
+	width: 100%;
+	height: 220px;
+	background:white;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	transition: all 400ms cubic-bezier(0.5,0,0,1);
+}
+
+.icon img
+{
+  width: 70%;
+}
+
+.info__description
+{
+	width: 300px;
+	height: 220px;
+	padding: 20px;
+	margin-top:-220px; 
+	transition: all 400ms cubic-bezier(0.5,0,0,1);
+}
+
+.info__description p
+{
+	font-size: 14px;
+	margin-top: 10px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-box-orient: vertical;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	line-clamp:5;
+    overflow: hidden;    
+}
+
+.info__description input
+{
+  margin-top: 20px;
+  padding: 10px 40px;
+  background: #000;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;  
+}
+
+
+#container #footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 3rem;
+	background: rgb(0, 40, 89);
+}
+
+#container #footer p {
+	color: white;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/agregar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+       
+        <header id="header">
+            <navbar class="navbar">
+            <img src="/img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/stock">Stock</a> </li>
+                    <li> <a href="/facturas">Pedidos</a> </li>
+                    <li class="mostrar">
+                        <a href="#" class="active">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null" class="active">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
+                </ul>
+            </navbar>
+        </header>
+
+
+        <main id="main">
+
+            <h1>Agregar Herramienta</h1>
+                <form action="/herramientasPost/<%= id %> " method="POST">
+                    <input type="number" required name="codigo" placeholder="Codigo De Barras">
+                    <input type="number" required name="cantidad" value="1" placeholder="Cantidad">
+                    <input type="submit" value="Enviar">
+                </form>
+        
+            <a href="/codigo-de-barras/null" class="btn-finish">Finalizar Pedido</a>
+    
+        </main>
+
+        <img src="/img/logo2.png" alt="LOGO" class="image">
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </body>
+    </html>
+    <% if (estado === 'error') { %>
+        
+        <script>
+            function error() {
+   
+                Swal.fire({
+                title: 'ERROR',
+                text: 'HERRAMIENTA NO ENCONTRADA',
+                icon: 'error'
+            });
+    
+        }
+   
+        error();
+        
+        </script>
+       
+    <% } if (estado === 'success'){ %>
+       
+        <script>
+           // url(/img/tools/<%= tool.toLowerCase(); %>.png) center no-repeat'
+           function Success() {
+   
+                Swal.fire({
+                imageUrl: '/img/tools/<%= tool.toLowerCase(); %>.png',
+                background: '#fff',
+                // backdrop: `
+                // rgba(256,256,256)
+                // url(/img/tools/<%= tool.toLowerCase(); %>.png)
+                // center right
+                // no-repeat
+                // `,
+                imageWidth: '200px',
+                title: 'Herramienta enviada',
+                icon: 'success',
+                confirmButtonColor: '#00aae4',
+                confirmButtonText: 'CONFIRMADO',
+                iconColor: '#00aae4'
+                });
+    
+            }
+        
+
+            Success();
+
+        </script>
+       
+    <% } else if(estado === 'errorSinStock') { %>
+
+        <script>
+            function errorSinStock() {
+                
+                Swal.fire({
+          title: 'SIN STOCK',
+          text: 'YA NO HAY MAS STOCK DE <%= tool.toUpperCase(); %>',
+          showCancelButton: true,
+          cancelButtonText: 'CANCELAR',
+          confirmButtonText: 'IR AL STOCK',
+          icon: 'warning'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                window.location.href = `/stock/info/<%= tool.toLowerCase(); %>`;
+                }
+            })
+    
+            }
+   
+            errorSinStock();
+
+        </script>
+     
+    <% } else if(estado === 'errorStock') { 
+        
+
+        %>
+        
+        <script>
+            function errorStock() {
+                
+              
+
+                Swal.fire({
+                title: 'AUN HAY STOCK',
+                text: 'ESTA PIDIENDO MAS <%= tool.toUpperCase() %>S DE LOS QUE HAY SOLO QUEDAN <%= cant %>',
+                icon: 'warning'
+                });
+    
+            }
+   
+            errorStock();
+
+        </script>
+
+    <% } %>
+ 

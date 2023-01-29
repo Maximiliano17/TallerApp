@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Acceder E.E.S.T. Nº5</title>
+</head>
+<body>
+    <div id="container">
+    <div class="content">
+        <form action="/auth" method = "POST" class="formulario">
+            <div class="brand">
+                <img src="./img/logo.png" alt="" class="logo">
+                <p>E E S T N°5</p>
+            </div>
+            <label for="name">Nombre
+                <input type="text" name="name">
+            </label>
+            <label for="password">Contraseña
+                <input type="password" name="password">
+            </label>
+            <input type="submit" value="Acceder" name = "submit" class="submit">
+            <a href="https://tecnica5merlo.edu.ar/wordpress/">← Ir a E.E.S.T. N° 5</a>
+        </form>
+        </div>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="./js/sweetAlert.js"></script> -->
+
+  
+
+    <%  if (sendAlert) { %>
+       
+       <script>
+            function sweet() {
+
+                Swal.fire({
+                title: 'ERROR',
+                text: 'CREDENCIONALES INCORRECTAS',
+                icon: 'error'
+            });
+    
+        }
+
+        sweet();
+        
+        </script>
+    <% } %>
+
+</body>
+</html>

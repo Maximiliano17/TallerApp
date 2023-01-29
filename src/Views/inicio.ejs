@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+
+	<title>Pañol/Inicio</title>
+	
+    <link rel="stylesheet" href="./css/inicio.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    
+</head>
+<body>
+
+	<div id="container">
+		<header id="header">
+				<navbar class="navbar">
+				<img src="./img/logo.png" alt="LOGO" class="logo">
+					<ul class="navbar-list">
+						<li> <a href="/inicio" class="active">Inicio</a> </li>
+                        <li> <a href="/stock">Stock</a> </li>
+						<li> <a href="/facturas">Pedidos</a> </li>
+                        <li class="mostrar">
+                            <a href="#">Peticiones</a>
+                            <div class="submenu">
+                                <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                                <a href="/formulario">Formulario Manual</a>
+                            </div>
+                        </li>
+					</ul>
+				</navbar>
+		</header>
+	  
+   <!--TARJETAS-->
+
+     <div class="body__page">
+     	<div class="container__card">
+
+            <div class="card_c1 animate__animated animate__fadeIn">
+                <div class="icon">
+                    <img src="./img/barcode.png">
+                </div>
+                <div class="info__description">
+                    <h2>Lector De Barras</h2>
+                    <p>La mejor opción para pedidos pequeños o simplemente por comodidad, con solo escanear el código de la herramienta pedida y determinar la cantidad tendremos el instrumento agregado !!.</p>
+                    <a href="/codigo-de-barras/null"><input type="submit" value="Entrar"></a>
+                </div>
+            </div>
+
+        <div class="card_c2 animate__animated animate__fadeIn">
+                <div class="icon">
+                    <img src="./img/formulario.png">
+                </div>
+                <div class="info__description">
+                    <h2>Formulario</h2>
+                    <p>La mejor opcion para grandes pedidos, esta opcion es completamente manual somos el mismo formulario que el formato en papel no te pierdas !!</p>
+                    <a href="/formulario"><input type="submit" value="Entrar"></a>
+                </div>
+            </div>
+
+
+
+     	</div>
+        
+
+
+    
+         <footer id="footer">
+			<p>Desarrollada por Juan Pablo Villalba & Maximiliano Dos Santos - EEST N°5 - 2022</p>
+		</footer>
+	</div>
+
+    <script>
+        
+    </script>
+
+<!-- <script type="text/javascript" src="../public/js/inicio.js"></script> -->
+
+</body>
+</html>
+
+
+<!-- <h1>404</h1>
+<p>NOT FOUND</p>
+<a href="/">Go Home</a> -->

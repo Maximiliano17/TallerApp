@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/facturas.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <title>Facturas</title>
+</head>
+<body>
+   <div id="container">
+    
+        <header id="header">
+            <navbar class="navbar">
+            <img src="./img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/stock">Stock</a> </li>
+                    <li> <a href="/facturas" class="active">Facturas</a> </li>
+                    <li class="mostrar">
+                        <a href="#">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
+                </ul>
+            </navbar>
+        </header>
+
+    <section class="facturas-container">
+        
+        <% if (estado) { %>
+
+        <% var number = 1;  %> 
+
+        <% dataForm.forEach(data => {  %>
+
+        <%
+            var especialidad = data.especialidad;
+            
+            var espLower = especialidad.toLowerCase();
+            
+            var esp = espLower.replace(/ /g, "");
+        %>
+            <div class="factura animate__animated animate__fadeIn">
+                <div class="factura-info">
+            
+        <% 
+
+            let date = new Date(data.hours);
+
+            let hour = new Date(data.hours).toString().slice(15,24);
+
+            var today = new Date('05 October 2011 14:48 UTC');
+
+            let dateIso = date.toISOString().slice(0,10);
+
+        %> 
+
+            <h1 class="title-factura">Factura #<%= number %> </h1>
+        <div class="top-card">
+            <div>
+                <p>Especialidad</p>
+                <p>Fecha</p>
+                <p>Hora</p>
+            </div>
+            <div>
+                <p class="opacity"><%= data.especialidad %> </p>
+                <p class="opacity"><%= dateIso %> </p>
+                <p class="opacity"><%= hour %> </p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+            
+        
+            <p class="title-datos"> <span class="<%= esp %>">Datos</span> </p>
+
+
+            <div class="datos">
+                <div class="padre">
+                    <div>
+                         <p name = "alumno" class="top-black"><%= data.alumno %> </p>
+        
+            
+          
+                         <p name = "docente" class="top-black docente"><%= data.docente %> </p>
+                    </div>
+           
+                    <div>
+                
+                    <p name = "curso" class="top-black curso"><%= data.curso %> </p>
+                    
+                    <p name = "division" class="top-black division"><%= data.division %> </p>
+                    
+                    </div>
+        </div>
+
+            <div class="esp-icon">
+                <div class="<%= esp %>">
+                </div>
+
+            </div>
+            
+            </div>
+        </div>
+            <p class="title-tool <%= esp %> ">Herramientas</p>
+            <div class="herramientas <%= esp %> ">
+                <% data.herramientas.forEach((element) => { %>
+            
+                <% for( let index = 0; index < element.length; index++ ) { %>
+                    <div>
+                        <p><%= element[index].nombre %> </p>
+                        <p><%= element[index].cantidad %> </p>
+                    </div>
+                    <% } %>
+            
+                
+            
+                <% console.log(data.herramientas) })  %>
+
+            </div>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    function YesOrNo(id) {
+                    Swal.fire({
+                        title: 'Estas Seguro ?',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Confirmar'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                            'Borrado!',
+                            'La factura ha sido eliminada.',
+                            'success'
+                            ).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = `/borrar/${id}`;
+                                    
+                                }
+                            })
+                            
+                           
+
+                        }
+                        })
+
+                    }
+
+                </script>
+
+                <div class="buttons">
+                    <div>
+                    <a href="#" class="<%= esp %> " onclick="YesOrNo('<%= data.id %>');">Borrar</a>
+                    <a href="/" class="<%= esp %> ">Informar</a>
+                    </div>
+                        <a class="download-img" href="/pdf/<%= data.id %> ">
+                            <% if (esp == "informatica") { %>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgb(0, 170, 228);transform: ;msFilter:;"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                               <% } %>
+
+                               <% if (esp == "turismo") { %>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgb(128, 0, 128);transform: ;msFilter:;"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                               <% } %>
+
+                               <% if (esp == "alimentos") { %>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgb(45, 87, 44);transform: ;msFilter:;"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                               <% } %>
+
+                               <% if (esp == "ciclobasico") { %>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgb(0, 0, 0);transform: ;msFilter:;"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                               <% } %>
+                            
+                        </a>
+                </div>
+
+          
+        </div>
+        
+        <% number++; }) %>
+
+        <% } else { %>
+            <script>
+                const facturasContainer = document.querySelector('.facturas-container');
+
+                facturasContainer.style.display = "flex";
+
+            </script>
+            <h1 class = "null">No hay Facturas Pendientes (!)</h1>
+        <% } %>
+
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #00aae4;
+    --informatica: #00aae4;
+    --turismo: #800080;
+    --alimentos: #2D572C;
+    --ciclo: black;
+}
+
+.null {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#container {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	width: 45px;
+    cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+}
+
+#container #header .navbar .search {
+	padding: 7px;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+    transition: .2s;
+    font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+
+
+#container .facturas-container {
+    display:grid ;
+    justify-items:center ;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 4.5rem 0;
+}
+
+#container .facturas-container .factura {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: color;
+    border: 3px solid black;
+    min-width: 400px;
+    min-height: 650px;
+    max-width: 400px;
+    max-height: 650px;
+}
+
+#container .facturas-container .factura .factura-info {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    height: 35%;
+    position: relative;
+} 
+
+#container .facturas-container .factura .factura-info .datos {
+   display: flex;
+    height: fit-content;
+    margin: 1.5rem 0;
+    
+}
+
+.title-factura {
+    padding-top: 5px;
+    width: fit-content;
+    position: relative;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.title-factura::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background: black;
+    top: 0;
+}
+
+.facturas-container .top-card {
+    display: flex;
+    justify-content: space-around;
+    width: 230px;
+    height: 75px;
+    text-align: left;
+    color: gray;
+    right: 0;
+    top: 0;
+    position: absolute;
+    opacity: .5;
+}
+
+.facturas-container .top-card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.date {
+    text-align: left;
+    margin-top: 1rem;
+    white-space: nowrap;
+}
+
+.hour {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.title-datos {
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.title-datos span.informatica {
+    color: var(--informatica);
+}
+
+.title-datos span.turismo {
+    color: var(--turismo);
+}
+
+.title-datos span.alimentos {
+    color: var(--alimentos);
+}
+
+.title-datos .alimentos {
+    color: var(--alimentos);
+}
+
+.title-datos .ciclobasico {
+    color: var(--ciclo);
+}
+
+
+.top-black {
+    width: 80px;
+    max-width: 100px;
+    white-space: wrap;
+    border-top: 4px solid black;
+    padding-top: 4px;
+}
+
+.top-black::first-letter {
+    text-transform: uppercase;
+}
+
+.curso, .division {
+    margin-top: 2rem;
+}
+
+#container .facturas-container .factura .factura-info .datos div:nth-child(1) {
+    justify-content: space-around;
+   text-align: left;
+    display: flex;
+}
+
+.padre {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.esp-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+
+
+
+.esp-icon div {
+    width: 40px; 
+    height: 40px; 
+    /* border: 3px solid #555;  */
+    background: #428bca;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.esp-icon .informatica {
+    background: var(--informatica);
+}
+
+.esp-icon .alimentos {
+    background-color: var(--alimentos);
+}
+
+.esp-icon .turismo {
+    background-color: var(--turismo);
+}
+
+.esp-icon .ciclobasico{
+    background: var(--ciclo);
+}
+
+#container .facturas-container .factura .factura-info .datos div:nth-child(2) {
+    justify-content: space-around;
+    display: flex;
+    
+}
+
+/*40 50 10 */
+#container .facturas-container .factura .herramientas {
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 1rem;
+    height: 50%;
+    margin: 1.5rem 0;
+}
+
+#container .facturas-container .factura .herramientas-new {
+    background: red;
+    overflow-y: scroll;
+}
+
+#container .facturas-container .factura .herramientas div p:nth-child(1) {
+    text-align: left;
+    line-height: 30px;
+    width: 60%;
+}
+
+#container .facturas-container .factura .herramientas div p:nth-child(2) {
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#container .facturas-container .factura .herramientas div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.herramientas::-webkit-scrollbar {
+    width: 15px;
+}
+
+.herramientas::-webkit-scrollbar-track {
+    background-color: none;
+    border: 1px solid #ccc;
+}
+
+.informatica::-webkit-scrollbar-thumb {
+    background-color: var(--informatica);
+    height: 60px;
+    color: black;
+}
+
+.turismo::-webkit-scrollbar-thumb {
+    background-color: var(--turismo);
+    height: 60px;
+    color: black;
+}
+
+.alimentos::-webkit-scrollbar-thumb {
+    background-color: var(--alimentos);
+    height: 60px;
+}
+
+.ciclobasico::-webkit-scrollbar-thumb {
+    background-color: var(--ciclo);
+    height: 60px;
+}
+
+.title-tool {
+    font-weight: bold;
+    padding-top: 15px;
+    border-top: 5px dotted rgba(0,0,0, .2);;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.title-tool::before {
+    content: '';
+    width: 15%;
+    height: 5px;
+    background: black;
+    position: absolute;
+    bottom: 0;
+}
+
+.buttons {
+    border-top: 5px dotted rgba(0,0,0, .2);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 15%;
+    padding-top: 15px;
+
+}
+
+.buttons div {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.buttons div a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background: var(--blue);
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+
+.buttons div .informatica {
+    background-color: var(--informatica);
+}
+
+.buttons div .turismo {
+    background-color: var(--turismo);
+}
+
+.buttons div .alimentos {
+    background-color: var(--alimentos);
+}
+
+.buttons div .ciclobasico {
+    background-color: var(--ciclo);
+}
+
+
+.buttons .download-img {
+    cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+    #container .facturas-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}

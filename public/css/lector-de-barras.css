@@ -1,0 +1,218 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	width: 45px;
+    cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+	transition: .2s;
+    font-weight: bold;
+}
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+}
+
+#container .content #main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 20%;
+}
+#container .content .left-data .list-items {
+    min-width: 50%;
+    min-height: 50%;
+    max-width: 60%;
+    max-height: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 15px 0;
+    
+}
+
+#container .content .left-data .list-items::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  #container .content .left-data .list-items::-webkit-scrollbar-track {
+    background-color: none;
+    border: 1px solid #ccc;
+  }
+  
+  #container .content .left-data .list-items::-webkit-scrollbar-thumb {
+    background-color: #00aae4;
+    height: 60px;
+    color: black;
+  }
+
+#container .content .left-data .list-items .list-items-logo {
+    width: 10vmin;
+}
+#container .content .left-data .list-items p {
+    width: 80%;
+    margin-top: 1.2rem;
+    text-align: left;
+}
+
+#container .content .left-data .list-items .title-um {
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+#container .content .left-data .list-items .title-um::before {
+    content: '';
+    position: absolute;
+    width: 5%;
+    height: 2px;
+    background: rgb(65, 65, 65);
+    bottom: 0;
+}
+
+#container .content .left-data .list-items .info-um {
+    margin-top: 1.5rem;
+}
+
+#container .content .left-data .list-items .line {
+    white-space: nowrap;
+}
+
+#container .content .left-data .list-items .info-um span {
+    font-size: 1.2rem;
+    color: #00aae4;
+    font-weight: bold;
+}
+
+
+#container .content .left-data {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+}
+
+#container .content .left-data #enviar .titulo_form {
+    display: flex;
+    align-items: center;
+}
+
+#container .content .left-data #enviar .titulo_form a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #008ec2;
+}
+
+#container .content .left-data #enviar {
+    min-height: 50%;
+    height: fit-content;
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+#container .content .left-data #enviar input, select {
+    margin-top: 1rem;
+    width: 150px;
+    height: 32px;
+}
+
+#container .content .left-data #enviar .form_botton {
+    display: flex;
+    gap: 5px;
+}
+
+#container .content .left-data #enviar .form_botton input {
+    width: 70px;
+    height: 1.5rem;
+    background:#008ec2;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #fff;
+    border: 1px solid black;
+    border-style: none;
+}
+

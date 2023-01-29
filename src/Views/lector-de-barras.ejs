@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/lector-de-barras.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+            <navbar class="navbar">
+            <img src="/img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/stock">Stock</a> </li>
+                    <li> <a href="/facturas">Pedidos</a> </li>
+                    <li class="mostrar">
+                        <a href="#" class="active">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null" class="active">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
+                </ul>
+            </navbar>
+        </header>
+        
+        <div class="content">
+
+            <section class="left-data">
+                
+                <div class="list-items">
+                    <h2>Manual De Usuario Basico</h2>
+                    <img src="/img/logo.png" alt="LOGO" class="list-items-logo">
+                    
+                    <p class="title-um">Herramientas</p>
+
+                    <p class="info-um"><span>1.</span> Todas las herramientas actuales y las que se creen en un futuro automaticamente se les asignara un codigo de tipo UPC el cual consta de 13 digitos y en base a este en la informacion de cada herramienta se crea un codigo de barras exclusivo para cada herramienta.</p>
+
+                 
+
+                    <p class="title-um">Formulario</p>
+
+                    <p class="info-um"><span>2.</span> El formulario que esta situado a la derecha o el que se encuentra ubicado en la seccion de "formulario manual", ambos piden informacion basica y necesaria sobre la peticion del alumno en cuestion, siendo estos el nombre, docente, especialidad, curso y division.</p>
+
+                 
+
+                    <p class="title-um">Lector de barras</p>
+
+                    <p class="info-um"><span>3.</span> Al momento de presionar el boton de enviar en el formulario se nos va a redirigir a una seccion para añadir las herramientas, en esta seccion se encuentran 2 partes muy importantes la primera de ellas es un campo de texto , tendremos que hacer click sobre el y luego con nuestro lector de barras escanear el codigo de barras de la herramienta que queramos agregar y entonces automaticamente se agregara dicha herramienta.
+                    En caso de querer modificar la cantidad de esa herramienta que por defecto es 1, vamos a tener que aumentar la cantidad modificando el campo de texto que esta situado a la derecha del campo para agregar herramientas.</p>
+
+                   
+
+                    <p class="title-um">Cantidades</p>
+
+                    <p class="info-um"><span>4.</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, accusantium beatae! Dolor, nostrum nesciunt vero, quibusdam minima autem dolorem labore laborum dolores praesentium ea quaerat blanditiis. Impedit itaque veniam ipsum.</p>
+
+                   
+
+                </div>
+                <form id="enviar" method="POST" action="/barcodePost">
+
+                    <section class="titulo_form">
+                        <a href="/inicio">E.E.S.T N° 5</a>
+                        <img width="30" src="/img/logo2.png">
+                    </section>
+                   
+                    <input type="text" name="alumno" placeholder=" Alumno" required>
+                    <input type="text" name="docente" placeholder=" Docente" required>
+                  <div class="seleccion">
+                    <select name = "especialidad_op" required>
+                        <option>- -</option>
+                        <option>Informatica</option>
+                        <option>Turismo</option>
+                        <option>Alimentos</option>
+                        <option>Ciclo Basico</option>
+                    </select>
+                  </div>  
+                  <div class="seleccion">
+                    <select name = "year_op" required>
+                        <option>- -</option>
+                        <option>1 ro</option>
+                        <option>2 do</option>
+                        <option>3 ro</option>
+                        <option>4 to</option>
+                        <option>5 to</option>
+                        <option>6 to</option>
+                        <option>7 mo</option>
+                    </select>
+                  </div>
+                  <div class="seleccion">
+                    <select name = "year_div_op">
+                        <option>- -</option>
+                        <option>Primera</option>
+                        <option>Segunda</option>
+                        <option>Tercera</option>
+                        <option>Cuarta</option>
+                        <option>Quinta</option>
+                        <option>Sexta</option>
+                        <option>Septima</option>
+                    </select>
+                  </div>
+
+                  <section class="form_botton">
+                    <input type="submit" name="submit_form" value="Enviar">
+                    <input type="reset" name="reset_form" value="Borrar">
+                  </section>
+            
+                </form>
+
+            </section>
+        
+        </div>
+    
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (status === 'error') { %>
+    
+        <script>
+            function Error() {
+                Swal.fire({
+                 title: 'ERROR',
+                 text: 'CREDENCIONALES INCORRECTAS',
+                 icon: 'error'
+             });
+            }
+
+            Error();
+        </script>
+
+    <% } %>
+</body>
+</html>

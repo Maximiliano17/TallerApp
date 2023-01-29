@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario E.E.S.T. Nº5</title>
+    <link rel="stylesheet" href="./css/formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="container">
+
+  <!--HEADER-->
+
+  <header id="header">
+    <navbar class="navbar">
+    <img src="./img/logo.png" alt="LOGO" class="logo">
+        <ul class="navbar-list">
+            <li> <a href="/inicio">Inicio</a> </li>
+            <li> <a href="/stock">Stock</a> </li>
+            <li> <a href="/facturas">Pedidos</a> </li>
+            <li class="mostrar">
+              <a href="#" class="active">Peticiones</a>
+              <div class="submenu">
+                  <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                  <a href="/formulario" class="active">Formulario Manual</a>
+              </div>
+          </li>
+        </ul>
+    </navbar>
+</header>
+
+<script>
+  function addImage(tool) {
+    let lower = tool;
+    lower = lower.toLowerCase();
+    window.location.href = `/stock/info/${lower}`;
+  }
+</script>
+
+<main id="main">
+
+    <form action="/formBE" method = "POST" id="formulario">
+
+<!--FORMULARIO--> 
+<div class = "table-div"> 
+
+    <% 
+      data.forEach(element => { 
+        
+      var firsLetter = element.name.toUpperCase();
+
+      var endWord = element.name.slice(1, element.name.length);
+      
+    %>
+       
+        <div class="tarjeta">
+          <section class="imagen">
+            <img src="/img/tools/<%=element.name%>.png" alt=" " onclick="addImage('<%= element.name %>');">
+          </section>
+          <section class="informacion_tarjeta">
+            <input type="number" name="tools[]">
+            <p class="nombre_herramienta"><%= firsLetter[0] + endWord %></p>
+          </section>
+        </div>
+
+       <% }) %>
+
+</div>
+
+<!--FORM_ENVIAR--> 
+
+    <div id="enviar">
+        <section class="titulo_form">
+            <a href="/inicio">E.E.S.N°5</a>
+            <img width="30" src="./img/logo2.png">
+        </section>
+      <section class="form_submit">
+        <input type="text" name="alumno" placeholder=" Alumno" autocomplete="nope">
+        <input type="text" name="docente" placeholder=" Docente">
+      </section>
+      <div class="seleccion">
+        <select name = "especialidad_op">
+            <option>- -</option>
+            <option>Informatica</option>
+            <option>Turismo</option>
+            <option>Alimentos</option>
+            <option>Ciclo Basico</option>
+        </select>
+      </div>  
+      <div class="seleccion">
+        <select name = "year_op">
+            <option>- -</option>
+            <option>1 ro</option>
+            <option>2 do</option>
+            <option>3 ro</option>
+            <option>4 to</option>
+            <option>5 to</option>
+            <option>6 to</option>
+            <option>7 mo</option>
+        </select>
+      </div>
+      <div class="seleccion">
+        <select name = "year_div_op">
+            <option>- -</option>
+            <option>Primera</option>
+            <option>Segunda</option>
+            <option>Tercera</option>
+            <option>Cuarta</option>
+            <option>Quinta</option>
+            <option>Sexta</option>
+            <option>Septima</option>
+        </select>
+      </div>
+      </section>
+
+       <div id="componente_extra">
+          <input type="text" class="search_tool" placeholder="Comp Extra:_ _ _ _"></p>
+       </div>
+       
+      <section class="form_botton">
+        <input type="submit" name="submit_form" value="Enviar">
+        <input type="reset" name="reset_form" value="Borrar">
+      </section>
+
+    </div>
+
+  </form>
+</main>
+ </div>
+
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+ <%  if (sendAlert) { %>
+    
+    <script>
+         function sweet() {
+
+             Swal.fire({
+             title: 'ERROR',
+             text: 'CREDENCIONALES INCORRECTAS',
+             icon: 'error'
+         });
+ 
+     }
+
+     sweet();
+     
+     </script>
+ <% } %>
+ 
+     <% if(success) { %>
+
+     <script>
+         function Success() {
+
+             Swal.fire({
+             title: 'ENVIADO',
+             text: 'REALIZADO EXITOSAMENTE',
+             icon: 'success'
+         });
+ 
+     }
+
+     Success();
+     
+     </script>
+
+<% } %>
+
+  <% if(estadoStock == 1) { %>
+
+  <script>
+      function ConStock() {
+
+          Swal.fire({
+          title: 'AUN HAY STOCK',
+          text: 'ESTA PIDIENDO MAS <%= herramienta.toUpperCase(); %>S DE LOS QUE HAY',
+          icon: 'warning'
+      });
+
+  }
+
+  ConStock();
+  
+  </script>
+
+<% } %>
+
+
+<% if(estadoStock == 2) { %>
+
+  <script>
+      function SinStock() {
+
+          Swal.fire({
+          title: 'SIN STOCK',
+          text: 'YA NO HAY MAS STOCK DE <%= herramienta.toUpperCase(); %>',
+          showCancelButton: true,
+          cancelButtonText: 'CANCELAR',
+          confirmButtonText: 'IR AL STOCK',
+          icon: 'warning'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // window.location.href = `/stock/${id}`;
+          window.location.href = `/stock/info/<%= herramienta %>`;
+        }
+      })
+
+  }
+
+  SinStock();
+  
+  </script>
+
+<% } %>
+
+<script src="/js/formulario.js"></script>
+
+</body>
+</html>

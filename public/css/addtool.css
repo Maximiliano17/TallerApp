@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	width: 45px;
+    cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+}
+
+#container #header .navbar .search {
+	padding: 7px;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+    transition: .2s;
+    font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container #main {
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#container #main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: snow;
+    border-radius: 15px;
+    width: 30%;
+    padding-bottom: 1rem;
+    height: 550px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 20px black;
+    z-index: 999;
+
+}
+
+.input-wrapper {
+    margin-top: 2rem;
+    position: relative;
+    width: 85%;
+    
+  }
+  
+  .input-wrapper h1 {
+    color: #00aae4;
+    padding-bottom: 25px;
+    position: relative;
+  }
+
+  .input-wrapper h1::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background: black;
+    bottom: 0;
+}
+
+.input-wrapper .input:focus {
+  border-color: #00aae4;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #00aae4, 0 0 8px #00aae4;
+}
+
+  /* .input-wrapper h1 {
+    color: #00aae4;
+    width: fit-content;
+    white-space: nowrap;
+    position: relative;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+  }
+
+  .input-wrapper h1::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 5px;
+      background: black;
+      top: 0;
+  } */
+
+
+
+
+
+
+
+
+
+  .input {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    color: #191919;
+    padding: 15px 15px 15px 15px;
+    width: 100%;
+  }
+
+  .input-wrapper .input:focus {
+    border-color: #00aae4;
+    outline: 0;
+
+  }
+  
+  .input.general {
+    /* padding: 15px 15px 15px 15px; */
+  }
+  
+  .input-icon {
+    color: #191919;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .input-icon p {
+    font-size: 1.5rem;
+  }
+  
+  .input-icon.general {
+    left: unset;
+    right: 12px;
+  }
+
+  .input-wrapper .submit {
+    background: #00aae4;
+    color: white;
+    font-weight: bold;
+    border: none;
+  }
+
+  @media (min-width: 1250px) {
+    #container #main form {
+
+      width: 20%;
+
+    }
+  }
+
+

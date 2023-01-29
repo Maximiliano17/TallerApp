@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+}
+
+.arrow-back {
+  width: 24px;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	  width: 45px;
+    cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+}
+
+#container #header .navbar .search {
+	padding: 7px;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+	transition: .2s;
+  font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #main {
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+    display: flex;
+}
+
+#container #main .content {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .2); 
+}
+
+#container #main .content .top {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#container #main .content .top p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#container #main .content .top button {
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+	background:#0275d8;
+	color: #fff;
+	width: auto;
+	height: 2.5em;
+	padding: 0 2.25em;
+	border-radius: 3.5em;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 600;
+    transition: .15s ease;
+    transition: .3s ease;
+}
+
+#container #main .content .top button:nth-child(2) {
+    background: #d9534f;
+}
+
+#container #main .content .top button:hover {
+    background-color: black;
+    transition:  .3s ease;
+}
+
+#container #main .content .cards {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: calc(100% - 15%);
+}
+
+#container #main .content .cards .card {
+    background-color: #fff;
+    height: 200px;
+    width: 90%;
+    padding: 0 3em;
+    border: 1px solid #ede8f0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid gray;
+    position: relative;
+    box-shadow: 1px 1px 10px black;
+    position: relative;
+} 
+
+#container #main .content .cards .card .btn-download {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(4rem);
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  background:#0275d8;
+  color: #fff;
+  width: auto;
+  height: 2.5em;
+  padding: 0 2.25em;
+  border-radius: 3.5em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: .15s ease;
+  transition: .3s ease;
+}
+
+#container #main .content .cards .card .btn-download:hover {
+  background-color: black;
+  transition: .3s ease;
+}
+
+#container #main .content .cards .card svg{
+    margin-right: 1rem;
+    z-index: 100;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+#container #main .content .cards .card .barcode-svg {
+  z-index: 645;
+  position: absolute;
+}
+#container #main .content .cards .card:nth-child(5) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#container #main .content .cards .card #barcode {
+  z-index: 78;
+  margin: 0;
+}
+
+#container #main .content .cards .card .download-barcode {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  z-index: 100;
+  transform: translateY(12px) translateX(15px);
+  cursor: pointer;
+}
+
+#container #main .content .cards .card p:nth-child(1) {
+    color: #000;
+    font-size: 3rem;
+}
+
+#container #main .content .cards .card p:nth-child(1)::first-letter {
+  text-transform: uppercase;
+}
+
+#container #main .content .cards .card p:nth-child(2) {
+    color: #4b84fe;
+    font-size: 1.1rem;
+}
+
+
+#edit-form {
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    transform: translateY(-1000px);
+}
+
+#edit-form.active {
+    transition: 2s ease;
+    display: flex;
+    transform: translateY(0);
+}
+
+#edit-form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#edit-form div form {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 1px 15px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: snow;
+    border-radius: 15px;
+    width: 30%;
+    padding-bottom: 1rem;
+    height: 450px;
+}
+
+.input-wrapper {
+    margin-top: 2rem;
+    position: relative;
+    width: 85% !important;
+  }
+  
+  .input-wrapper h1 {
+    color: #00aae4;
+    margin-top: 0;
+    padding-bottom: 1rem;
+    border: none;
+    position: relative;
+  }
+
+  .input-wrapper h1::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 5px;
+      background: black;
+      bottom: 0;
+  }
+
+  .input {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    color: #191919;
+    padding: 15px 15px 15px 15px;
+    width: 100%;
+  }
+
+  .input-wrapper .input:focus {
+    border-color: #00aae4;
+    outline: 0;
+    box-shadow: inset 0 1px 1px #00aae4, 0 0 8px #00aae4;
+  }
+  
+  .input-icon {
+    color: #191919;
+    position: absolute;
+    min-width: 20px;
+    min-height: 20px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .input-icon p {
+    font-size: 1.5rem;
+  }
+  
+  .input-icon.general {
+    left: unset;
+    right: 12px;
+  }
+
+  .input-wrapper .submit {
+    background: #00aae4;
+    border: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  #btn-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    margin: .5rem;
+    border: none;
+    background: rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+  }
+
+  @media (min-width: 1250px) {
+    #edit-form div form { 
+
+      width: 20%;
+
+    }
+  }

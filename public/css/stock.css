@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #00aae4;
+    --informatica: #00aae4;
+    --turismo: #800080;
+    --alimentos: #2D572C;
+    --ciclo: black;
+}
+
+#container {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#container #header {
+	width: 100%;
+	height: 4.5rem;
+	background: #fff;
+	box-shadow: 10px 1px 10px black;
+}
+
+#container #header .navbar {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+#container #header .navbar .logo {
+	width: 45px;
+    cursor: pointer;
+}
+
+#container #header .navbar .navbar-list {
+	display: flex;
+	list-style: none;
+	gap:1rem;
+}
+
+#container #header .navbar .search {
+	padding: 7px;
+}
+
+#container #header .navbar .navbar-list li a {
+	text-decoration: none;
+	color: #000;
+	margin-left: .5rem;
+    transition: .2s;
+    font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+    z-index: 999;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container .add {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2rem;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    border-radius: 100%;
+    padding: 10px 15px;
+    font-size: 2rem;
+    transition: .5s ease;
+}
+
+#container .add .add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transform: .3s ease all;
+    position: relative;
+    overflow: hidden;
+}
+
+#container .add .boton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	background: #141414;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow-y: hidden;
+    overflow-x: visible;
+    border-radius: 50%;
+}
+
+#container .add .boton span {
+	position: relative;
+    font-size: 2rem;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+#container .add .boton.tres::after {
+	content: "";
+	width: 100%;
+	height: 300px;
+	background: var(--informatica);
+	position: absolute;
+	z-index: 1;
+	top: -300px;
+	left: 0;
+	transition: .4s ease-in-out all;
+	border-radius: 0px 0px 300px 300px;
+}
+
+#container .add .boton.tres:hover::after {
+	top: 0;
+}
+
+
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.5rem;
+    background: gray;
+    color: white;
+}
+
+#container .sub-container {
+    
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: scroll;
+}
+
+#container .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 15px 0;
+    height: 100%;
+   
+
+}
+
+#container .card-container .card-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    height: 200px;
+    margin-top: 2rem;
+    box-shadow: 0px 0px 5px 1px black;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
+#container .card-container .card-content:hover {
+    transition: .2s ease-in-out;
+    transform: scale(0.99);
+}
+
+#container .card-container .card-content div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 33.33%;
+}
+
+#container .card-container .card-content div .title {
+    font-size: 2rem;
+    color: #000;
+    font-weight: bold;
+}
+
+#container .card-container .card-content div .title-nm {
+    color: #fff;
+}
+
+#container .card-container .card-content div .info::first-letter {
+    text-transform: uppercase;
+}
+
+#container .card-container .card-content div .info {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#container .card-container .card-content div:nth-child(1) {
+    background: #000;
+    color: white;
+    border-right: 1px solid black;
+}
+
+#container .card-container .card-content div .n-total {
+    font-size: 3rem;
+    color: #cc8400;
+}
+
+#container .card-container .card-content div .n-stock {
+    font-size: 3rem;
+    color: green;
+}
+
+#container .card-container .card-content div .n-use {
+    font-size: 3rem;
+    color: red;
+}

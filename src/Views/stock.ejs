@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/stock.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+</head>
+<body>
+    <div id="container">
+
+        <header id="header">
+            <navbar class="navbar">
+            <img src="/img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/stock" class="active">Stock</a> </li>
+                    <li> <a href="/facturas">Pedidos</a> </li>
+                    <li class="mostrar">
+                        <a href="#">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
+                </ul>
+            </navbar>
+        </header>
+    
+    
+    <div class="sub-container">
+    <div class="card-container">
+        
+        <script>
+            function GetName(name) {
+                window.location.href = `/stock/info/${name}`;
+            }
+        </script>
+
+        <% stockdb.forEach(element => { %>
+        
+        <div class="card-content animate__animated animate__fadeIn" onclick="GetName('<%= element.name %>');">
+            <div>
+                <p class="title title-nm">Nombre</p>
+                <p class="info"><%= element.name %></p>
+            </div>
+            
+            <div>
+                <p class="title">Utilizando</p>
+                <p class="info n-use"><%= element.total - element.stock %></p>
+            </div>
+
+            <div>
+                <p class="title">Stock Utilizable</p>
+                <p class="info n-stock"><%= element.stock %></p>
+            </div>
+            
+            <div>
+                <p class="title">Stock Total</p>
+                <p class="info n-total"><%= element.total %></p>
+            </div>
+        
+        </div>
+        
+        <% }) %>
+
+        </div>
+    </div>
+        <div class="add">
+            <button class="boton tres"><span>+</span></button>
+        </div>
+    </div>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/add.js"></script>
+
+<% if (alert == 1) { %>
+     
+    <script>
+        function Success() {
+
+            Swal.fire({
+            title: 'HERRAMIENTA CREADA',
+            text: 'LA HERRAMIENTA <%= herramienta.toUpperCase(); %> SE CREO CON EXITO',
+            icon: 'success'
+            }).then((result) => {
+                
+                window.location = '/stock';
+
+            })
+
+        }
+
+        Success();
+
+    </script>
+
+<% } %>
+
+
+
+<% if (alert == 2) { %>
+    <script>
+        function Error() {
+            Swal.fire({
+            title: 'ERROR',
+            text: 'LA HERRAMIENTA <%= herramienta.toUpperCase(); %> YA EXISTE',
+            icon: 'error'
+            })
+        }
+
+        Error();
+    </script>
+<% } %>
+
+</body>
+</html>

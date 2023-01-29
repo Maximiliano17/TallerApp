@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/tool-info.css">
+
+    <script src="/js/JsBarcode.code128.min.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+            <navbar class="navbar">
+            <img src="/img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/stock" class="active">Stock</a> </li>
+                    <li> <a href="/facturas">Pedidos</a> </li>
+                    <li class="mostrar">
+                        <a href="#">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
+                </ul>
+            </navbar>
+        </header>
+        <main id="main">
+            <div class="content">
+
+                <div class="top">
+                    <% data.forEach(element => { %>
+
+                    <p> <a href="/stock"><img src="/img/undo.png" class="arrow-back" alt=""></a> Informacion General</p>
+                    <div>
+                        <button id="button-edit">Editar</button>  
+                        <button onclick="YesOrNo('<%= element.identificador %>');">Borrar</button>
+                    </div>
+                </div>
+                <div class="cards">
+                    
+
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M9.715 12c1.151 0 2-.849 2-2s-.849-2-2-2-2 .849-2 2 .848 2 2 2z"></path><path d="M20 4H4c-1.103 0-2 .841-2 1.875v12.25C2 19.159 2.897 20 4 20h16c1.103 0 2-.841 2-1.875V5.875C22 4.841 21.103 4 20 4zm0 14-16-.011V6l16 .011V18z"></path><path d="M14 9h4v2h-4zm1 4h3v2h-3zm-1.57 2.536c0-1.374-1.676-2.786-3.715-2.786S6 14.162 6 15.536V16h7.43v-.464z"></path></svg>
+                        <div>
+                            <p><%= element.name %> </p>
+                            <p>Nombre de la Herramienta</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20.995 6.903a.997.997 0 0 0-.547-.797l-7.973-4a.997.997 0 0 0-.895-.002l-8.027 4c-.297.15-.502.437-.544.767-.013.097-1.145 9.741 8.541 15.008a.995.995 0 0 0 .969-.009c9.307-5.259 8.514-14.573 8.476-14.967zm-8.977 12.944c-6.86-4.01-7.14-10.352-7.063-12.205l7.071-3.523 6.998 3.511c.005 1.87-.481 8.243-7.006 12.217z"></path></svg>
+                        <div>
+                            <p><%= element.total %> </p>
+                            <p>Stock Total</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path></svg>
+                        <div>
+                            <p><%= element.stock %> </p>
+                            <p>Stock Utilizable</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                        <div>
+                            <p><%= element.total - element.stock %></p>
+                            <p>Stock Utilizando</p>
+                        </div>
+                    </div>
+
+                    <div class="card card-barcode">
+
+                        <div class="picture">
+
+                            <svg id="barcode"></svg>
+
+                            <script>
+                                JsBarcode("#barcode", '<%= element.codebar %>', {
+                                    format: "codabar",
+                                    lineColor: "#000",
+                                    width: 2,
+                                    height: 70,
+                                    displayValue: true
+                                });
+
+                                function pdfMake() {
+                                    
+                                    var element = document.querySelector('.picture');
+                                    
+                                    
+                                    
+                                    var opt = {
+                                        margin:       1,
+                                        filename:     '<%= element.name %>',
+                                        image:        { type: 'jpeg', quality: 0.98 },
+                                        width: 4,
+                                        height: 40,
+                                        html2canvas:  { scale: 1 },
+                                        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                                    };
+
+                                    html2pdf().set(opt).from(element).save();
+                                }
+
+                            </script>
+
+                            <button class="btn-download" onclick="pdfMake();">Descargar</button>
+
+                        </div>
+                        
+                    </div>
+                    <div class="card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);"><path d="M2 20h20v2H2zM4 3v14a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1zm2 1h3v12H6zM13 17a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-5a1 1 0 0 0-1 1zm2-9h3v8h-3z"></path></svg>
+                        <div>
+                            <p>68%</p>
+                            <p>Uso Esta Ultima Semana</p>
+                        </div>
+
+                        <% }) %>
+
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="edit-form">
+    <div class="contenedor-form">
+        <% data.forEach(element => { %>
+
+        <form action="/stock/edit/send/<%= element.name %>" method="post" class="formulario-de-edicion" enctype="multipart/form-data">
+
+            <button id="btn-close" type="button" onclick="clicked();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+            </button>
+
+            <div class="input-wrapper">
+                <h1>Agregar Herramienta</h1>
+            </div>
+
+            <div class="input-wrapper">
+                <input type="text" name="herramienta" class="input password" placeholder="<%= element.name %>" data-lpignore="true">
+              
+                <svg class="input-icon password" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 8h2V6h3.252L7.68 18H5v2h8v-2h-2.252L13.32 6H17v2h2V4H5z"></path></svg>
+
+            </div>
+
+            <div class="input-wrapper">
+                <input type="number" name="stock" class="input password" placeholder="<%= element.stock %>" data-lpignore="true">
+              
+                <svg class="input-icon password" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M22 8a.76.76 0 0 0 0-.21v-.08a.77.77 0 0 0-.07-.16.35.35 0 0 0-.05-.08l-.1-.13-.08-.06-.12-.09-9-5a1 1 0 0 0-1 0l-9 5-.09.07-.11.08a.41.41 0 0 0-.07.11.39.39 0 0 0-.08.1.59.59 0 0 0-.06.14.3.3 0 0 0 0 .1A.76.76 0 0 0 2 8v8a1 1 0 0 0 .52.87l9 5a.75.75 0 0 0 .13.06h.1a1.06 1.06 0 0 0 .5 0h.1l.14-.06 9-5A1 1 0 0 0 22 16V8zm-10 3.87L5.06 8l2.76-1.52 6.83 3.9zm0-7.72L18.94 8 16.7 9.25 9.87 5.34zM4 9.7l7 3.92v5.68l-7-3.89zm9 9.6v-5.68l3-1.68V15l2-1v-3.18l2-1.11v5.7z"></path></svg>
+
+            </div>
+
+            <div class="input-wrapper">
+                <input class="input password submit" name="imgTool" type="file" accept="image/png, image/jpeg, image/jpg">
+            </div>
+
+            <div class="input-wrapper">
+                <input class="input password submit" type="submit" value="ENVIAR">
+            </div>
+               
+            
+            
+        </form>
+
+        <% }) %>
+
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/edit-form.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    
+    <script>
+
+        function YesOrNo(id) {
+        Swal.fire({
+            title: 'Borrar Herramienta',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Borrado!',
+                'La herramienta ha sido eliminada.',
+                'success'
+                ).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = `/stock/delete/${id}`;
+                    }
+                })
+                
+               
+
+            }
+            })
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg_primary:  #008ec2;
+}
+
+
+#container {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://tecnica5merlo.edu.ar/wordpress/wp-content/plugins/loginpress/img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#container .content {
+    width: 400px;
+    height: 600px;
+    background: whitesmoke;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 15px rgb(0 0 0 / 80%);
+    box-shadow: 0 0 15px rgb(0 0 0 / 80%);
+}
+
+#container .formulario {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    width: 90%;
+    height: 100%;
+}
+
+#container .content .formulario p {
+}
+
+#container .formulario label {
+    display: flex;
+    flex-direction: column;
+    color: #3c434a;
+}
+
+
+#container .formulario input {
+    margin-top: .5rem;
+    width: 250px;
+    padding: 15px;
+}
+
+#container .formulario .logo {
+    width: 80px;
+    margin: 0 auto;
+}
+
+#container .formulario .submit {
+    background: var(--bg_primary);
+    border-radius: 5px;
+    font-size: normal 15px "Roboto", sans-serif;
+    color: #fff;
+    border: 1px solid black;
+}
+
+
+#container .formulario a {
+    text-decoration: none;
+    color: #50575e;
+    font-size: 13px;
+    transition: .5s ease-in;
+}
+
+#container .formulario a:hover {
+    transition: .5s ease-in;
+    color: #2271b1;
+}
